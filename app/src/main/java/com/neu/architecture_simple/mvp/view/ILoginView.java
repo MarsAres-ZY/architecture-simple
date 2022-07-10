@@ -1,4 +1,4 @@
-package com.neu.architecture_simple.mvp.login.view;
+package com.neu.architecture_simple.mvp.view;
 
 public interface ILoginView {
 	void onClearText();

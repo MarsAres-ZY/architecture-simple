@@ -1,4 +1,4 @@
-package com.neu.architecture_simple.mvc.login.model;
+package com.neu.architecture_simple.mvc.model;
 
 /**
  * Created by estel on 2015/10/12.

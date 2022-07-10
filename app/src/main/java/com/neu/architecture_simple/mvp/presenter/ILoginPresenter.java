@@ -1,4 +1,4 @@
-package com.neu.architecture_simple.mvp.login.presenter;
+package com.neu.architecture_simple.mvp.presenter;
 
 public interface ILoginPresenter {
 	void clear();

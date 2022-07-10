@@ -1,6 +1,9 @@
-package com.neu.architecture_simple.mvp.login;
+package com.neu.architecture_simple.mvc;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -10,20 +13,18 @@ import android.widget.Toast;
 import androidx.activity.ComponentActivity;
 
 import com.neu.architecture_simple.R;
-import com.neu.architecture_simple.mvp.login.presenter.ILoginPresenter;
-import com.neu.architecture_simple.mvp.login.presenter.LoginPresenterCompl;
-import com.neu.architecture_simple.mvp.login.view.ILoginView;
+import com.neu.architecture_simple.mvc.model.IUser;
+import com.neu.architecture_simple.mvc.model.UserModel;
 
 
-public class LoginActivity extends ComponentActivity implements ILoginView, View.OnClickListener {
+public class LoginActivity extends ComponentActivity implements View.OnClickListener {
 
     private EditText editUser;
     private EditText editPass;
     private Button btnLogin;
     private Button btnClear;
-    ILoginPresenter loginPresenter;
     private ProgressBar progressBar;
-
+    private IUser user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,35 +41,50 @@ public class LoginActivity extends ComponentActivity implements ILoginView, View
         btnLogin.setOnClickListener(this);
         btnClear.setOnClickListener(this);
 
-        //init
-        loginPresenter = new LoginPresenterCompl(this);
-        loginPresenter.setProgressBarVisibility(View.INVISIBLE);
+        user = new UserModel("123","123");
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_login_clear:
-                loginPresenter.clear();
+                clear();
                 break;
             case R.id.btn_login_login:
-                loginPresenter.setProgressBarVisibility(View.VISIBLE);
+                setProgressBarVisiblity(View.VISIBLE);
                 btnLogin.setEnabled(false);
                 btnClear.setEnabled(false);
-                loginPresenter.doLogin(editUser.getText().toString(), editPass.getText().toString());
+                doLogin(editUser.getText().toString(), editPass.getText().toString());
                 break;
         }
     }
 
-    @Override
-    public void onClearText() {
+    private void clear() {
         editUser.setText("");
         editPass.setText("");
     }
 
-    @Override
+    private void setProgressBarVisiblity(int visibility) {
+        progressBar.setVisibility(visibility);
+    }
+
+    private void doLogin(String name, String passwd){
+        boolean isLoginSuccess = true;
+        final int code = user.checkUserValidity(name, passwd);
+        if (code != 0) isLoginSuccess = false;
+        final Boolean result = isLoginSuccess;
+        new Handler(Looper.myLooper()).postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                onLoginResult(result, code);
+            }
+        }, 5000);
+
+    }
+
     public void onLoginResult(Boolean result, int code) {
-        loginPresenter.setProgressBarVisibility(View.INVISIBLE);
+        setProgressBarVisiblity(View.INVISIBLE);
         btnLogin.setEnabled(true);
         btnClear.setEnabled(true);
         if (result) {
@@ -82,9 +98,5 @@ public class LoginActivity extends ComponentActivity implements ILoginView, View
         super.onDestroy();
     }
 
-    @Override
-    public void onSetProgressBarVisibility(int visibility) {
-        progressBar.setVisibility(visibility);
-    }
 
 }

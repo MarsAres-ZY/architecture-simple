@@ -2,7 +2,7 @@ package com.neu.architecture_simple.mvp_google;
 
 import android.os.Handler;
 
-import com.neu.architecture_simple.mvp.login.model.IUser;
+import com.neu.architecture_simple.mvp.model.IUser;
 
 public class LoginPresenter implements LoginContract.Presenter {
     private IUser user;

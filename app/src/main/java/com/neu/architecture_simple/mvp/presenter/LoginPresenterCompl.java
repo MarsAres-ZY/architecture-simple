@@ -1,11 +1,11 @@
-package com.neu.architecture_simple.mvp.login.presenter;
+package com.neu.architecture_simple.mvp.presenter;
 
 import android.os.Handler;
 import android.os.Looper;
 
-import com.neu.architecture_simple.mvp.login.model.IUser;
-import com.neu.architecture_simple.mvp.login.model.UserModel;
-import com.neu.architecture_simple.mvp.login.view.ILoginView;
+import com.neu.architecture_simple.mvp.model.IUser;
+import com.neu.architecture_simple.mvp.model.UserModel;
+import com.neu.architecture_simple.mvp.view.ILoginView;
 
 public class LoginPresenterCompl implements ILoginPresenter {
     ILoginView iLoginView;

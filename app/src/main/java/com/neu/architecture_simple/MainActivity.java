@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.neu.architecture_simple.mvp.LoginActivity;
+
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -25,11 +27,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         int id = v.getId();
 
         if (id == R.id.btn_mvc) {
-            intent.setClass(this, com.neu.architecture_simple.mvc.login.LoginActivity.class);
+            intent.setClass(this, com.neu.architecture_simple.mvc.LoginActivity.class);
         } else if (id == R.id.btn_mvp) {
-            intent.setClass(this, com.neu.architecture_simple.mvp.login.LoginActivity.class);
+            intent.setClass(this, LoginActivity.class);
         } else if (id == R.id.btn_mvvm) {
-            intent.setClass(this, com.neu.architecture_simple.mvc.login.LoginActivity.class);
+            intent.setClass(this, com.neu.architecture_simple.mvc.LoginActivity.class);
         }
 
         startActivity(intent);

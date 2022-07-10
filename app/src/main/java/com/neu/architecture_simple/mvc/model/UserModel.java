@@ -1,4 +1,4 @@
-package com.neu.architecture_simple.mvc.login.model;
+package com.neu.architecture_simple.mvc.model;
 
 public class UserModel implements IUser {
 	String name;
