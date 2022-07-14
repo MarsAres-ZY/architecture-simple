@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else if (id == R.id.btn_mvp) {
             intent.setClass(this, LoginActivity.class);
         } else if (id == R.id.btn_mvvm) {
-            intent.setClass(this, com.neu.architecture_simple.mvc.LoginActivity.class);
+            intent.setClass(this, com.neu.architecture_simple.mvvm.LoginActivity.class);
         }
 
         startActivity(intent);

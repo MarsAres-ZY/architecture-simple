@@ -30,6 +30,12 @@
             android:exported="false">
 
         </activity>
+
+        <activity
+            android:name=".mvvm.LoginActivity"
+            android:exported="false">
+
+        </activity>
     </application>
 
 </manifest>
