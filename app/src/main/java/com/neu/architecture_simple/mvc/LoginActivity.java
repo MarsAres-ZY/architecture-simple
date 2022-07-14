@@ -42,6 +42,8 @@ public class LoginActivity extends ComponentActivity implements View.OnClickList
         btnClear.setOnClickListener(this);
 
         user = new UserModel("123","123");
+
+        setProgressBarVisiblity(View.INVISIBLE);
     }
 
     @SuppressLint("NonConstantResourceId")
@@ -79,7 +81,7 @@ public class LoginActivity extends ComponentActivity implements View.OnClickList
             public void run() {
                 onLoginResult(result, code);
             }
-        }, 5000);
+        }, 2000);
 
     }
 

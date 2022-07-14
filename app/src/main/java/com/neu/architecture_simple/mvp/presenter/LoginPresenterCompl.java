@@ -34,7 +34,7 @@ public class LoginPresenterCompl implements ILoginPresenter {
             public void run() {
                 iLoginView.onLoginResult(result, code);
             }
-        }, 5000);
+        }, 2000);
 
     }
 
@@ -46,6 +46,6 @@ public class LoginPresenterCompl implements ILoginPresenter {
 
 
     private void initUser() {
-        user = new UserModel("mvp", "mvp");
+        user = new UserModel("123", "123");
     }
 }

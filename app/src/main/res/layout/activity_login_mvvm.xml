@@ -5,15 +5,14 @@
             name="click"
             type="com.neu.architecture_simple.mvvm.LoginActivity.ClickProxy" />
         <variable
-            name="user"
+            name="loginViewModel"
             type="com.neu.architecture_simple.mvvm.LoginViewModel" />
     </data>
 
     <LinearLayout xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginStart="700dp"
-        android:layout_marginEnd="700dp"
+
         android:gravity="center_vertical"
         android:orientation="vertical"
         android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -27,14 +26,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="USERNAME"
-            android:text="@={user.userModel.name}" />
+            android:text="@{loginViewModel.userModel.name}" />
 
         <EditText
             android:id="@+id/et_login_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="PASSWORD"
-            android:text="@={user.userModel.passwd}" />
+            android:text="@{loginViewModel.userModel.passwd}" />
 
         <LinearLayout
             android:layout_width="match_parent"

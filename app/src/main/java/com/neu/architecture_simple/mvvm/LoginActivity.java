@@ -1,20 +1,16 @@
 package com.neu.architecture_simple.mvvm;
 
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.view.View;
 import android.widget.Toast;
 
 import androidx.activity.ComponentActivity;
 import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.neu.architecture_simple.BR;
 import com.neu.architecture_simple.R;
 import com.neu.architecture_simple.databinding.ActivityLoginMvvmBinding;
-
-import java.util.Objects;
 
 
 public class LoginActivity extends ComponentActivity {
@@ -25,16 +21,16 @@ public class LoginActivity extends ComponentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_login_mvvm);
-        loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
-//        binding.setVariable(BV.R)
         initView();
         initObserver();
-
     }
 
     private void initView() {
+        loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_login_mvvm);
         binding.progressLogin.setVisibility(View.INVISIBLE);
+        binding.setVariable(BR.click, new ClickProxy());
+        binding.setVariable(BR.loginViewModel, loginViewModel);
     }
 
     private void initObserver() {
@@ -59,6 +55,7 @@ public class LoginActivity extends ComponentActivity {
         }
 
         public void onClickClear(View view) {
+//            Toast.makeText(LoginActivity.this,loginViewModel.getUserModel().getValue().getName()+" "+loginViewModel.getUserModel().getValue().getPasswd(),Toast.LENGTH_SHORT).show();
             binding.etLoginUsername.setText("");
             binding.etLoginPassword.setText("");
         }
